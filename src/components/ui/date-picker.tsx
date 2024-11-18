@@ -32,16 +32,28 @@ export function DatePicker({
           {...props}
         >
           <CalendarIcon />
-          {selected ? format(selected, "PPP") : <span>Pick a date</span>}
+          {selected ? format(selected, "MM/dd y") : <span>Pick a date</span>}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
+          captionLayout="dropdown"
           selected={selected}
           onSelect={(d, s, a, e) => {
             onSelectDate(d, s, a, e);
             setOpen(false);
+          }}
+          defaultMonth={selected || new Date()}
+          toYear={new Date().getFullYear()}
+          fromYear={1930}
+          classNames={{
+            day_hidden: "invisible",
+            dropdown:
+              "px-2 py-1.5 rounded-md bg-popover text-popover-foreground text-sm  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ring-offset-background",
+            caption_dropdowns: "flex gap-3",
+            vhidden: "hidden",
+            caption_label: "hidden",
           }}
           initialFocus
         />
