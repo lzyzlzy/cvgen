@@ -8,7 +8,6 @@ export interface Cv {
     github?: string;
     twitter?: string;
     linkedin?: string;
-    stackOverFlow?: string;
     experiences: CvEvent[];
     skills: string[];
     educations: CvEvent[];
