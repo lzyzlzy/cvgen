@@ -1,0 +1,90 @@
+import { Cv } from "@/core/CV";
+
+export const defaultData: Cv = {
+  name: "John Doe",
+  birthday: new Date("1990-01-01"),
+  phoneNumber: "123-456-7890",
+  jobTitle: "Software Engineer",
+  email: "john.doe@example.com",
+  website: "https://johndoe.com",
+  github: "https://github.com/johndoe",
+  educations: [
+    {
+      title: "Bachelor of Science in Computer Science",
+      subTitle: "University of Technology",
+      content: "Studied various computer science subjects including algorithms, data structures, and software engineering.",
+      from: new Date("2015-09-01"),
+      to: new Date("2019-06-01"),
+      url: "https://university.com",
+    },
+    {
+      title: "Master of Science in Software Engineering",
+      subTitle: "Institute of Advanced Studies",
+      content: "Focused on advanced software engineering principles, project management, and research.",
+      from: new Date("2019-09-01"),
+      to: new Date("2021-06-01"),
+      url: "https://institute.com",
+    },
+  ],
+  experiences: [
+    {
+      title: "Software Engineer",
+      subTitle: "Tech Company",
+      content: "Developed and maintained web applications using modern frameworks and technologies.",
+      from: new Date("2021-07-01"),
+      to: new Date("2022-12-01"),
+      url: "https://techcompany.com",
+    },
+    {
+      title: "Frontend Developer",
+      subTitle: "Web Solutions Inc.",
+      content: "Worked on the frontend development of various client projects, ensuring responsive and user-friendly designs.",
+      from: new Date("2020-01-01"),
+      to: new Date("2021-06-01"),
+      url: "https://websolutions.com",
+    },
+    {
+      title: "Intern",
+      subTitle: "Startup Hub",
+      content: "Assisted in developing MVPs for startups, gaining hands-on experience in agile development.",
+      from: new Date("2019-06-01"),
+      to: new Date("2019-12-01"),
+      url: "https://startuphub.com",
+    },
+  ],
+  projects: [
+    {
+      title: "Personal Portfolio",
+      subTitle: "A personal portfolio website",
+      content: "Developed a personal portfolio website to showcase my projects.",
+      from: new Date("2020-01-01"),
+      to: new Date("2020-06-01"),
+      url: "https://portfolio.com",
+    },
+    {
+      title: "E-commerce Platform",
+      subTitle: "An online store for various products",
+      content: "Built an e-commerce platform with features like product listing, shopping cart, and payment integration.",
+      from: new Date("2021-02-01"),
+      to: new Date("2021-08-01"),
+      url: "https://ecommerce.com",
+    },
+    {
+      title: "Blog Website",
+      subTitle: "A platform for sharing articles and blogs",
+      content: "Created a blog website with user authentication, content management, and commenting system.",
+      from: new Date("2020-07-01"),
+      to: new Date("2020-12-01"),
+      url: "https://blogwebsite.com",
+    },
+    {
+      title: "Weather App",
+      subTitle: "A weather forecasting application",
+      content: "Developed a weather app that provides real-time weather updates and forecasts.",
+      from: new Date("2019-03-01"),
+      to: new Date("2019-06-01"),
+      url: "https://weatherapp.com",
+    },
+  ],
+  skills: []
+};

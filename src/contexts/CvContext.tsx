@@ -1,5 +1,6 @@
 import { createContext, useReducer, ReactNode } from "react";
-import { Cv } from "@/core/CV";
+import { Cv, CvEvent } from "@/core/CV";
+import { defaultData } from "@/lib/defaultDatas";
 
 export const CvContext = createContext<Cv | null>(null);
 export const CvDispatchContext = createContext<React.Dispatch<CvReduceAction>>(
@@ -11,7 +12,7 @@ interface CvProviderProps {
 }
 
 export function CvProvider({ children }: CvProviderProps) {
-  const [data, dispatch] = useReducer(cvReducer, {} as Cv);
+  const [data, dispatch] = useReducer(cvReducer, defaultData);
 
   return (
     <CvContext.Provider value={data}>
@@ -24,7 +25,7 @@ export function CvProvider({ children }: CvProviderProps) {
 
 interface CvReduceAction {
   type: string;
-  data: any;
+  data?: any;
 }
 
 function cvReducer(state: Cv, action: CvReduceAction): Cv {
@@ -49,6 +50,99 @@ function cvReducer(state: Cv, action: CvReduceAction): Cv {
     }
     case "setBirth": {
       return { ...state, birthday: action.data };
+    }
+    case "addEducation": {
+      return {
+        ...state,
+        educations: [
+          ...(state?.educations ?? []),
+          action.data ?? ({} as CvEvent),
+        ],
+      };
+    }
+    case "updateEducationItem": {
+      if (!state.educations) {
+        return { ...state };
+      }
+      const educations = state.educations;
+      educations[action.data.index] = action.data.value;
+
+      return {
+        ...state,
+        educations: [...educations],
+      };
+    }
+    case "removeEducationItem": {
+      if (!state.educations) {
+        return { ...state };
+      }
+      state.educations = state.educations.filter((e) => e != action.data);
+      return {
+        ...state,
+        educations: [...state.educations],
+      };
+    }
+    case "addExperience": {
+      return {
+        ...state,
+        experiences: [
+          ...(state?.experiences ?? []),
+          action.data ?? ({} as CvEvent),
+        ],
+      };
+    }
+    case "updateExperienceItem": {
+      if (!state.experiences) {
+        return { ...state };
+      }
+      const experiences = state.experiences;
+      experiences[action.data.index] = action.data.value;
+
+      return {
+        ...state,
+        experiences: [...experiences],
+      };
+    }
+    case "removeExperienceItem": {
+      if (!state.experiences) {
+        return { ...state };
+      }
+      state.experiences = state.experiences.filter((e) => e != action.data);
+      return {
+        ...state,
+        experiences: [...state.experiences],
+      };
+    }
+    case "addProject": {
+      return {
+        ...state,
+        projects: [
+          ...(state?.projects ?? []),
+          action.data ?? ({} as CvEvent),
+        ],
+      };
+    }
+    case "updateProject": {
+      if (!state.projects) {
+        return { ...state };
+      }
+      const projects = state.projects;
+      projects[action.data.index] = action.data.value;
+
+      return {
+        ...state,
+        projects: [...projects],
+      };
+    }
+    case "removeProject": {
+      if (!state.projects) {
+        return { ...state };
+      }
+      state.projects = state.projects.filter((e) => e != action.data);
+      return {
+        ...state,
+        projects: [...state.projects],
+      };
     }
     default: {
       throw Error("Unknown action: " + action.type);
