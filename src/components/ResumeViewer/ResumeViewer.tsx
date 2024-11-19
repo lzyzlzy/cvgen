@@ -7,22 +7,18 @@ import {
   TwitterIcon,
   LinkedinIcon,
 } from "lucide-react";
-import html2pdf from "html2pdf.js";
+import jsPDF from "jspdf";
 
 export function ResumeViewer({ data }: { data: Cv }) {
   const downloadPdf = () => {
-    const element = document.getElementById("resume-content");
-    if (element) {
-      html2pdf()
-        .from(element)
-        .set({
-          margin: 0,
-          filename: "resume.pdf",
-          html2canvas: { scale: 1 },
-          jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-        })
-        .save();
-    }
+    const resumeContent = document.getElementById("resume-content");
+    if (!resumeContent) return;
+    const pdf = new jsPDF();
+    pdf.html(resumeContent, {
+      callback: (pdf) => {
+        pdf.save("resume.pdf");
+      },
+    });
   };
 
   return (
