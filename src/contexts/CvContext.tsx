@@ -1,5 +1,6 @@
 import { createContext, useReducer, ReactNode } from "react";
 import { Cv, CvEvent } from "@/core/CV";
+import { defaultData } from "@/lib/defaultDatas";
 
 export const CvContext = createContext<Cv | null>(null);
 export const CvDispatchContext = createContext<React.Dispatch<CvReduceAction>>(
@@ -11,7 +12,7 @@ interface CvProviderProps {
 }
 
 export function CvProvider({ children }: CvProviderProps) {
-  const [data, dispatch] = useReducer(cvReducer, {} as Cv);
+  const [data, dispatch] = useReducer(cvReducer, defaultData);
 
   return (
     <CvContext.Provider value={data}>

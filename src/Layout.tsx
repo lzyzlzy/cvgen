@@ -28,7 +28,7 @@ export default function Layout() {
         <ResumeEditor />
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel>
+      <ResizablePanel style={{ overflow: "auto" }}>
         <ResumeViewer data={currentCV ?? ({} as Cv)} />
       </ResizablePanel>
     </ResizablePanelGroup>
