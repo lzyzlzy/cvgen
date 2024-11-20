@@ -8,7 +8,7 @@ import { UseCv } from "./contexts/CvContext";
 import { ResumeEditor } from "./components/ResumeEditor/ResumeEditor";
 import { ResumeViewer } from "./components/ResumeViewer/ResumeViewer";
 import { Cv } from "./core/CV";
-import { TopBar } from "./components/ResumeViewer/TopBar";
+import { ActionBar } from "./components/ResumeViewer/ActionBar";
 import { useRef, useState } from "react";
 
 export default function Layout() {
@@ -31,15 +31,20 @@ export default function Layout() {
         <ResumeEditor />
       </ResizablePanel>
       <ResizableHandle withHandle />
-      <ResizablePanel style={{ overflow: "auto" }}>
-        <div className="flex flex-col items-center min-h-screen bg-gray-100 ">
-          <TopBar resumeRef={resumeRef} scale={scale} setScale={setScale} />
+      <ResizablePanel className="static " style={{ overflow: "auto" }}>
+        <div className="flex flex-col items-center min-h-screen bg-gray-100 pb-6">
           <ResumeViewer
             ref={resumeRef}
             scale={scale}
             data={currentCV ?? ({} as Cv)}
           />
         </div>
+        <ActionBar
+          className="sticky bottom-0 w-full"
+          resumeRef={resumeRef}
+          scale={scale}
+          setScale={setScale}
+        />
       </ResizablePanel>
     </ResizablePanelGroup>
   );
