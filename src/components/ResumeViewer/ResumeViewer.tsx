@@ -2,6 +2,7 @@ import { Cv } from "@/core/CV";
 import { forwardRef } from "react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { UseLocalization } from "@/lib/hooks/LocalizationContext";
 
 export const ResumeViewer = forwardRef(function ResumeViewer(
   {
@@ -15,6 +16,8 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
   },
   ref
 ) {
+  const localization = UseLocalization();
+  const textKeyStore = localization?.textKeyStore;
 
   return (
     <div
@@ -46,7 +49,7 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
       </header>
 
       <section className="mb-1">
-        <h2 className="text-2xl font-semibold">Experiences</h2>
+        <h2 className="text-2xl font-semibold">{textKeyStore.experience}</h2>
         {data.experiences && data.experiences.length > 0 ? (
           data.experiences.map((exp, index) => (
             <div key={index} className="mb-4">
@@ -60,12 +63,12 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
             </div>
           ))
         ) : (
-          <p>No experiences available.</p>
+          <></>
         )}
       </section>
 
       <section className="mb-1">
-        <h2 className="text-2xl font-semibold">Skills</h2>
+        <h2 className="text-2xl font-semibold">{textKeyStore.skills}</h2>
         {data.skills && data.skills.length > 0 ? (
           <ul className="list-disc list-inside">
             {data.skills.map((skill, index) => (
@@ -73,12 +76,12 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
             ))}
           </ul>
         ) : (
-          <p>No skills available.</p>
+          <></>
         )}
       </section>
 
       <section className="mb-1">
-        <h2 className="text-2xl font-semibold">Educations</h2>
+        <h2 className="text-2xl font-semibold">{textKeyStore.education}</h2>
         {data.educations && data.educations.length > 0 ? (
           data.educations.map((edu, index) => (
             <div key={index} className="mb-1">
@@ -92,25 +95,11 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
             </div>
           ))
         ) : (
-          <p>No educations available.</p>
+          <></>
         )}
       </section>
-
-      {data.languages && data.languages.length > 0 && (
-        <section className="mb-1">
-          <h2 className="text-2xl font-semibold">Languages</h2>
-          <ul className="list-disc list-inside">
-            {data.languages.map((lang, index) => (
-              <li key={index}>
-                {lang.name} - {lang.level}
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
       <section className="mb-1">
-        <h2 className="text-2xl font-semibold">Projects</h2>
+        <h2 className="text-2xl font-semibold">{textKeyStore.projects}</h2>
         {data.projects && data.projects.length > 0 ? (
           data.projects.map((project, index) => (
             <div key={index} className="mb-1">
@@ -121,7 +110,7 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
             </div>
           ))
         ) : (
-          <p>No projects available.</p>
+          <></>
         )}
       </section>
     </div>

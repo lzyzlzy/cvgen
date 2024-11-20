@@ -1,10 +1,11 @@
 import { createContext, useReducer, ReactNode, useContext } from "react";
 import { Cv, CvEvent } from "@/core/CV";
-import { defaultResume } from "@/lib/defaultDatas";
+import { defaultResume } from "@/lib/data/defaultResume";
+import ReduceAction from "@/core/ReduceAction";
 
 export const CvContext = createContext<Cv | null>(null);
-export const CvDispatchContext = createContext<React.Dispatch<CvReduceAction>>(
-  {} as React.Dispatch<CvReduceAction>
+export const CvDispatchContext = createContext<React.Dispatch<ReduceAction>>(
+  {} as React.Dispatch<ReduceAction>
 );
 
 interface CvProviderProps {
@@ -31,12 +32,7 @@ export function UseCvDispatch() {
   return useContext(CvDispatchContext);
 }
 
-interface CvReduceAction {
-  type: string;
-  data?: any;
-}
-
-function cvReducer(state: Cv, action: CvReduceAction): Cv {
+function cvReducer(state: Cv, action: ReduceAction): Cv {
   switch (action.type) {
     case "setName": {
       return { ...state, name: action.data };
