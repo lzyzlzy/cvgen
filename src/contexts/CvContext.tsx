@@ -1,6 +1,6 @@
-import { createContext, useReducer, ReactNode } from "react";
+import { createContext, useReducer, ReactNode, useContext } from "react";
 import { Cv, CvEvent } from "@/core/CV";
-import { defaultData } from "@/lib/defaultDatas";
+import { defaultResume } from "@/lib/defaultData";
 
 export const CvContext = createContext<Cv | null>(null);
 export const CvDispatchContext = createContext<React.Dispatch<CvReduceAction>>(
@@ -12,7 +12,7 @@ interface CvProviderProps {
 }
 
 export function CvProvider({ children }: CvProviderProps) {
-  const [data, dispatch] = useReducer(cvReducer, defaultData);
+  const [data, dispatch] = useReducer(cvReducer, defaultResume);
 
   return (
     <CvContext.Provider value={data}>
@@ -21,6 +21,14 @@ export function CvProvider({ children }: CvProviderProps) {
       </CvDispatchContext.Provider>
     </CvContext.Provider>
   );
+}
+
+export function UseCv(): Cv | null {
+  return useContext(CvContext);
+}
+
+export function UseCvDispatch() {
+  return useContext(CvDispatchContext);
 }
 
 interface CvReduceAction {
@@ -116,10 +124,7 @@ function cvReducer(state: Cv, action: CvReduceAction): Cv {
     case "addProject": {
       return {
         ...state,
-        projects: [
-          ...(state?.projects ?? []),
-          action.data ?? ({} as CvEvent),
-        ],
+        projects: [...(state?.projects ?? []), action.data ?? ({} as CvEvent)],
       };
     }
     case "updateProject": {

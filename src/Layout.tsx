@@ -4,15 +4,18 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { useMediaQuery } from "@uidotdev/usehooks";
-import { CvContext } from "./contexts/CvContext";
-import { useContext } from "react";
+import { UseCv } from "./contexts/CvContext";
 import { ResumeEditor } from "./components/ResumeEditor/ResumeEditor";
 import { ResumeViewer } from "./components/ResumeViewer/ResumeViewer";
 import { Cv } from "./core/CV";
+import { TopBar } from "./components/ResumeViewer/TopBar";
+import { useRef, useState } from "react";
 
 export default function Layout() {
   const isDesktop = useMediaQuery("(min-width: 640px)");
-  const currentCV = useContext(CvContext);
+  const currentCV = UseCv();
+  const resumeRef = useRef<HTMLDivElement>(null);
+  const [scale, setScale] = useState(1);
 
   return (
     <ResizablePanelGroup
@@ -29,7 +32,14 @@ export default function Layout() {
       </ResizablePanel>
       <ResizableHandle withHandle />
       <ResizablePanel style={{ overflow: "auto" }}>
-        <ResumeViewer data={currentCV ?? ({} as Cv)} />
+        <div className="flex flex-col items-center min-h-screen bg-gray-100 ">
+          <TopBar resumeRef={resumeRef} scale={scale} setScale={setScale} />
+          <ResumeViewer
+            ref={resumeRef}
+            scale={scale}
+            data={currentCV ?? ({} as Cv)}
+          />
+        </div>
       </ResizablePanel>
     </ResizablePanelGroup>
   );
