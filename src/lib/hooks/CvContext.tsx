@@ -1,6 +1,6 @@
 import { createContext, useReducer, ReactNode, useContext } from "react";
 import { Cv, CvEvent } from "@/core/CV";
-import { defaultResume } from "@/lib/defaultData";
+import { defaultResume } from "@/lib/defaultDatas";
 
 export const CvContext = createContext<Cv | null>(null);
 export const CvDispatchContext = createContext<React.Dispatch<CvReduceAction>>(

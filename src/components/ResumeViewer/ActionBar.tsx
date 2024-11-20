@@ -2,7 +2,7 @@ import { PrinterIcon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { useReactToPrint } from "react-to-print";
 import { RefObject } from "react";
-import { UseCv } from "@/contexts/CvContext";
+import { UseCv } from "@/lib/hooks/CvContext";
 import { Slider } from "../ui/slider";
 import { cn } from "@/lib/utils";
 
@@ -22,7 +22,7 @@ export function ActionBar({
   const handlePrint = useReactToPrint({
     contentRef: resumeRef,
     pageStyle:
-      "body { transform-origin: top left; margin: auto; transform: scale(1); -webkit-print-color-adjust: exact !important;  color-adjust: exact !important; print-color-adjust: exact !important; }",
+      "body { transform-origin: top left; box-shadow: unset; margin: unset; transform: scale(1); -webkit-print-color-adjust: exact !important;  color-adjust: exact !important; print-color-adjust: exact !important; }",
     documentTitle: cv?.name,
     onAfterPrint: () => console.log("printed"),
   });

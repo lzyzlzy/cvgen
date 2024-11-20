@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { UseCv, UseCvDispatch } from "@/contexts/CvContext";
+import { UseCv, UseCvDispatch } from "@/lib/hooks/CvContext";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Cv } from "@/core/CV";

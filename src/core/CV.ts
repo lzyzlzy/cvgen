@@ -6,8 +6,6 @@ export interface Cv {
   email: string;
   website?: string;
   github?: string;
-  twitter?: string;
-  linkedin?: string;
   experiences: CvEvent[];
   skills: string[];
   educations: CvEvent[];
