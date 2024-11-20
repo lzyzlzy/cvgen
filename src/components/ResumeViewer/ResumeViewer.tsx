@@ -8,7 +8,9 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
   {
     data,
     scale,
+    className,
   }: {
+    className?: string;
     data: Cv;
     scale?: Number;
   },
@@ -19,7 +21,8 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
       ref={ref as React.Ref<HTMLDivElement>}
       id="resume-content"
       className={cn(
-        "bg-white p-6 shadow-lg rounded-lg max-w-4xl w-full"
+        "bg-white p-6 shadow-lg rounded-lg max-w-4xl w-full",
+        className
       )}
       style={{ transform: `scale(${scale ?? 1})` }}
     >

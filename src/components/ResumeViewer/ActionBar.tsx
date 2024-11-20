@@ -1,18 +1,22 @@
-import { DownloadIcon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
+import { PrinterIcon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { useReactToPrint } from "react-to-print";
 import { RefObject } from "react";
 import { UseCv } from "@/contexts/CvContext";
 import { Slider } from "../ui/slider";
+import { cn } from "@/lib/utils";
 
-export function TopBar({
+export function ActionBar({
   resumeRef,
   scale,
   setScale,
+  className,
+  ...props
 }: {
   resumeRef: RefObject<Element | Text>;
   scale: number;
   setScale: (arg0: number) => void;
+  className?: string;
 }) {
   const cv = UseCv();
   const handlePrint = useReactToPrint({
@@ -24,7 +28,13 @@ export function TopBar({
   });
 
   return (
-    <header className="w-full bg-white p-4 mb-6 flex justify-between items-center">
+    <header
+      className={cn(
+        "w-full bg-white p-4 flex justify-between items-center",
+        className
+      )}
+      {...props}
+    >
       <div className="flex flex-row items-center space-x-2">
         <ZoomOutIcon />
         <Slider
@@ -39,8 +49,8 @@ export function TopBar({
         {scale * 100}%
       </div>
       <Button onClick={() => handlePrint()}>
-        <DownloadIcon />
-        Download as PDF
+        <PrinterIcon />
+        Print
       </Button>
     </header>
   );
