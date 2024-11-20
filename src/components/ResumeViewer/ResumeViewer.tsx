@@ -1,6 +1,5 @@
 import { Cv } from "@/core/CV";
 import { forwardRef } from "react";
-import { TwitterIcon, LinkedinIcon } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 
@@ -16,6 +15,7 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
   },
   ref
 ) {
+
   return (
     <div
       ref={ref as React.Ref<HTMLDivElement>}
@@ -41,22 +41,6 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
         {data.github && (
           <p>
             <a href={data.github}>{data.github.replace(/^https?:\/\//, "")}</a>
-          </p>
-        )}
-        {data.twitter && (
-          <p>
-            <TwitterIcon className="inline-block mr-2" />
-            <a href={data.twitter}>
-              {data.twitter.replace(/^https?:\/\//, "")}
-            </a>
-          </p>
-        )}
-        {data.linkedin && (
-          <p>
-            <LinkedinIcon className="inline-block mr-2" />
-            <a href={data.linkedin}>
-              {data.linkedin.replace(/^https?:\/\//, "")}
-            </a>
           </p>
         )}
       </header>

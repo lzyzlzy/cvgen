@@ -1,6 +1,6 @@
 import './App.css'
 import Layout from './Layout'
-import { CvProvider } from './contexts/CvContext';
+import { CvProvider } from './lib/hooks/CvContext';
 
 function App() {
   return (
