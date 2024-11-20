@@ -9,10 +9,13 @@ import { Button } from "../ui/button";
 import { PlusIcon, Trash2Icon } from "lucide-react";
 import { Separator } from "../ui/separator";
 import { Textarea } from "../ui/textarea";
+import { UseLocalization } from "@/lib/hooks/LocalizationContext";
 
 export function ResumeEditor() {
   const currentCV = UseCv();
   const cvDispatch = UseCvDispatch();
+  const localization = UseLocalization();
+  const textKeyStore = localization?.textKeyStore;
 
   const onInputValueChange = useCallback(
     (actionType: string) => (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -42,11 +45,11 @@ export function ResumeEditor() {
   return (
     <div className="p-6  max-w-lg">
       <div id="basicInfoBlock">
-        <BlockTitle title="Basic" />
-        {renderInputTextField("Name", "name")}
-        {renderInputTextField("Job Title", "jobTitle")}
+        <BlockTitle title={textKeyStore.basic} />
+        {renderInputTextField(textKeyStore.name, "name")}
+        {renderInputTextField(textKeyStore.job_title, "jobTitle")}
         <div className="w-full items-center">
-          <Label htmlFor="birth">Day of Birth</Label>
+          <Label htmlFor="birth">{textKeyStore?.day_of_birth}</Label>
           <DatePicker
             id="birth"
             className="w-full"
@@ -54,14 +57,14 @@ export function ResumeEditor() {
             onSelectDate={(e) => cvDispatch({ type: "setBirth", data: e })}
           />
         </div>
-        {renderInputTextField("Email", "email", "email")}
-        {renderInputTextField("Phone Number", "phoneNumber")}
-        {renderInputTextField("Website", "website")}
-        {renderInputTextField("Github", "github")}
+        {renderInputTextField(textKeyStore.email, "email", "email")}
+        {renderInputTextField(textKeyStore.phone_number, "phoneNumber")}
+        {renderInputTextField(textKeyStore.website, "website")}
+        {renderInputTextField(textKeyStore.github, "github")}
       </div>
       <Separator className="my-4" />
       <div id="educationBlock">
-        <BlockTitle title="Education">
+        <BlockTitle title={textKeyStore.education}>
           <Button
             onClick={() =>
               cvDispatch({
@@ -103,7 +106,7 @@ export function ResumeEditor() {
                   </Button>
                 </div>
                 <div className="w-full items-center">
-                  <Label htmlFor={inputEduTitleId}>School</Label>
+                  <Label htmlFor={inputEduTitleId}>{textKeyStore.school}</Label>
                   <Input
                     id={inputEduTitleId}
                     placeholder="School"
@@ -119,7 +122,9 @@ export function ResumeEditor() {
                 </div>
                 <div className="w-full items-center grid grid-cols-2 justify-items-stretch gap-2">
                   <div className="w-auto">
-                    <Label htmlFor={inputEduFromDateId}>From</Label>
+                    <Label htmlFor={inputEduFromDateId}>
+                      {textKeyStore.from}
+                    </Label>
                     <DatePicker
                       className="w-full"
                       id={inputEduFromDateId}
@@ -134,7 +139,7 @@ export function ResumeEditor() {
                     />
                   </div>
                   <div className="w-auto">
-                    <Label htmlFor={inputEduToDateId}>To</Label>
+                    <Label htmlFor={inputEduToDateId}>{textKeyStore.to}</Label>
                     <DatePicker
                       className="w-full"
                       id={inputEduToDateId}
@@ -150,10 +155,10 @@ export function ResumeEditor() {
                   </div>
                 </div>
                 <div className="w-full items-center">
-                  <Label htmlFor={inputEduMajorId}>Major</Label>
+                  <Label htmlFor={inputEduMajorId}>{textKeyStore.major}</Label>
                   <Input
                     id={inputEduMajorId}
-                    placeholder="Major"
+                    placeholder={textKeyStore.major}
                     value={edu.content ?? ""}
                     onChange={(e) => {
                       edu.content = e.target.value;
@@ -171,7 +176,7 @@ export function ResumeEditor() {
       </div>
       <Separator className="my-4" />
       <div id="workExperienceBlock">
-        <BlockTitle title="Experiences">
+        <BlockTitle title={textKeyStore.experience}>
           <Button
             onClick={() =>
               cvDispatch({
@@ -214,10 +219,12 @@ export function ResumeEditor() {
                   </Button>
                 </div>
                 <div className="w-full items-center">
-                  <Label htmlFor={inputExpTitleId}>Company</Label>
+                  <Label htmlFor={inputExpTitleId}>
+                    {textKeyStore.company}
+                  </Label>
                   <Input
                     id={inputExpTitleId}
-                    placeholder="Company"
+                    placeholder={textKeyStore.company}
                     value={exp.title ?? ""}
                     onChange={(e) => {
                       exp.title = e.target.value;
@@ -229,10 +236,12 @@ export function ResumeEditor() {
                   />
                 </div>
                 <div className="w-full items-center">
-                  <Label htmlFor={inputExpSubtitleId}>Job Title</Label>
+                  <Label htmlFor={inputExpSubtitleId}>
+                    {textKeyStore.job_title}
+                  </Label>
                   <Input
                     id={inputExpSubtitleId}
-                    placeholder="Job Title"
+                    placeholder={textKeyStore.job_title}
                     value={exp.subTitle ?? ""}
                     onChange={(e) => {
                       exp.subTitle = e.target.value;
@@ -245,7 +254,9 @@ export function ResumeEditor() {
                 </div>
                 <div className="w-full items-center grid grid-cols-2 justify-items-stretch gap-2">
                   <div className="w-auto">
-                    <Label htmlFor={inputExpFromDateId}>From</Label>
+                    <Label htmlFor={inputExpFromDateId}>
+                      {textKeyStore.from}
+                    </Label>
                     <DatePicker
                       className="w-full"
                       id={inputExpFromDateId}
@@ -260,7 +271,7 @@ export function ResumeEditor() {
                     />
                   </div>
                   <div className="w-auto">
-                    <Label htmlFor={inputExpToDateId}>To</Label>
+                    <Label htmlFor={inputExpToDateId}>{textKeyStore.to}</Label>
                     <DatePicker
                       className="w-full"
                       id={inputExpToDateId}
@@ -276,11 +287,13 @@ export function ResumeEditor() {
                   </div>
                 </div>
                 <div className="w-full items-center">
-                  <Label htmlFor={inputExpContentId}>Content</Label>
+                  <Label htmlFor={inputExpContentId}>
+                    {textKeyStore.content}
+                  </Label>
                   <Textarea
                     rows={4}
                     id={inputExpContentId}
-                    placeholder="Content"
+                    placeholder={textKeyStore.content}
                     value={exp.content ?? ""}
                     onChange={(e) => {
                       exp.content = e.target.value;
@@ -298,7 +311,7 @@ export function ResumeEditor() {
       </div>
       <Separator className="my-4" />
       <div id="ProjectsBlock">
-        <BlockTitle title="Projects">
+        <BlockTitle title={textKeyStore.projects}>
           <Button
             onClick={() =>
               cvDispatch({
@@ -338,10 +351,10 @@ export function ResumeEditor() {
                   </Button>
                 </div>
                 <div className="w-full items-center">
-                  <Label htmlFor={inputProjTitleId}>Name</Label>
+                  <Label htmlFor={inputProjTitleId}>{textKeyStore.name}</Label>
                   <Input
                     id={inputProjTitleId}
-                    placeholder="Name"
+                    placeholder={textKeyStore.name}
                     value={proj.title ?? ""}
                     onChange={(e) => {
                       proj.title = e.target.value;
@@ -353,11 +366,13 @@ export function ResumeEditor() {
                   />
                 </div>
                 <div className="w-full items-center">
-                  <Label htmlFor={inputProjContentId}>Content</Label>
+                  <Label htmlFor={inputProjContentId}>
+                    {textKeyStore.content}
+                  </Label>
                   <Textarea
                     rows={4}
                     id={inputProjContentId}
-                    placeholder="Content"
+                    placeholder={textKeyStore.content}
                     value={proj.content ?? ""}
                     onChange={(e) => {
                       proj.content = e.target.value;
