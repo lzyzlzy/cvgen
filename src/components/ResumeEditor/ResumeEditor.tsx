@@ -1,5 +1,5 @@
-import { useCallback, useContext } from "react";
-import { CvContext, CvDispatchContext } from "@/contexts/CvContext";
+import { useCallback } from "react";
+import { UseCv, UseCvDispatch } from "@/contexts/CvContext";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Cv } from "@/core/CV";
@@ -8,10 +8,11 @@ import { DatePicker } from "../ui/date-picker";
 import { Button } from "../ui/button";
 import { PlusIcon, Trash2Icon } from "lucide-react";
 import { Separator } from "../ui/separator";
+import { Textarea } from "../ui/textarea";
 
 export function ResumeEditor() {
-  const currentCV = useContext(CvContext);
-  const cvDispatch = useContext(CvDispatchContext);
+  const currentCV = UseCv();
+  const cvDispatch = UseCvDispatch();
 
   const onInputValueChange = useCallback(
     (actionType: string) => (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -276,7 +277,8 @@ export function ResumeEditor() {
                 </div>
                 <div className="w-full items-center">
                   <Label htmlFor={inputExpContentId}>Content</Label>
-                  <Input
+                  <Textarea
+                    rows={4}
                     id={inputExpContentId}
                     placeholder="Content"
                     value={exp.content ?? ""}
@@ -352,7 +354,8 @@ export function ResumeEditor() {
                 </div>
                 <div className="w-full items-center">
                   <Label htmlFor={inputProjContentId}>Content</Label>
-                  <Input
+                  <Textarea
+                    rows={4}
                     id={inputProjContentId}
                     placeholder="Content"
                     value={proj.content ?? ""}
