@@ -33,12 +33,12 @@ export function ActionBar({
   return (
     <header
       className={cn(
-        "w-full bg-white p-4 flex justify-between items-center border-t",
+        "w-full bg-white p-4 flex justify-between items-center border-t flex-wrap",
         className
       )}
       {...props}
     >
-      <div className="flex flex-row items-center space-x-2">
+      <div className="hidden md:visible md:flex flex-row items-center space-x-2">
         <ZoomOutIcon />
         <Slider
           defaultValue={[100]}
