@@ -1,4 +1,4 @@
-import { Github, Lightbulb, Moon, Sun } from "lucide-react";
+import { Github, Moon, Sun } from "lucide-react";
 import { LanguageSelect } from "./LanguageSelect";
 import { Button } from "./ui/button";
 import { SimpleTooltip } from "./SimpleTooltip";
