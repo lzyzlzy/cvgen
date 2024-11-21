@@ -23,7 +23,9 @@ export function LanguageSelect() {
           <LanguagesIcon />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="space-x-2 w-30">
+      <PopoverContent
+        className={`space-x-2 w-${SupportedLangs.length * 10 + 10}`}
+      >
         {SupportedLangs.map(([lang, display]) => (
           <Button
             className="hover:border-black"
