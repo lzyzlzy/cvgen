@@ -28,6 +28,7 @@ export function ResumeEditor() {
       <div className="w-full items-center">
         <Label htmlFor={id}>{label}</Label>
         <Input
+          className=""
           type={type}
           id={id}
           key={id}
@@ -43,7 +44,7 @@ export function ResumeEditor() {
   );
 
   return (
-    <div className="p-6  max-w-lg">
+    <div className="p-6  max-w-lg dark:bg-slate-700 dark:text-white">
       <div id="basicInfoBlock">
         <BlockTitle title={textKeyStore.basic} />
         {renderInputTextField(textKeyStore.name, "name")}
@@ -73,7 +74,7 @@ export function ResumeEditor() {
             }
             variant="ghost"
             size="icon"
-            className="bg-white hover:border-black"
+            className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
           >
             <PlusIcon />
           </Button>
@@ -86,7 +87,7 @@ export function ResumeEditor() {
             const inputEduToDateId = "edu_to_input_" + i;
             return (
               <div
-                className="border-t-2 mb-2 hover:shadow-xl"
+                className="dark:border-white border-t-2 mb-2 hover:shadow-xl"
                 key={"edu_item_" + i}
               >
                 <div className="flex flex-row justify-between items-center">
@@ -100,7 +101,7 @@ export function ResumeEditor() {
                     }
                     variant="ghost"
                     size="icon"
-                    className="bg-white hover:border-black"
+                    className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
                   >
                     <Trash2Icon />
                   </Button>
@@ -185,7 +186,7 @@ export function ResumeEditor() {
             }
             variant="ghost"
             size="icon"
-            className="bg-white hover:border-black"
+            className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
           >
             <PlusIcon />
           </Button>
@@ -199,7 +200,7 @@ export function ResumeEditor() {
             const inputExpToDateId = "exp_to_input_" + i;
             return (
               <div
-                className="border-t-2 mb-2 hover:shadow-xl"
+                className="dark:border-white border-t-2 mb-2 hover:shadow-xl"
                 key={"exp_item_" + i}
               >
                 <div className="flex flex-row justify-between items-center">
@@ -213,7 +214,7 @@ export function ResumeEditor() {
                     }
                     variant="ghost"
                     size="icon"
-                    className="bg-white hover:border-black"
+                    className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
                   >
                     <Trash2Icon />
                   </Button>
@@ -320,7 +321,7 @@ export function ResumeEditor() {
             }
             variant="ghost"
             size="icon"
-            className="bg-white hover:border-black"
+            className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
           >
             <PlusIcon />
           </Button>
@@ -331,7 +332,7 @@ export function ResumeEditor() {
             const inputProjContentId = "proj_Content_input_" + i;
             return (
               <div
-                className="border-t-2 mb-2 hover:shadow-xl"
+                className="border-t-2 mb-2 dark:border-white hover:shadow-xl"
                 key={"proj_item_" + i}
               >
                 <div className="flex flex-row justify-between items-center">
@@ -345,7 +346,7 @@ export function ResumeEditor() {
                     }
                     variant="ghost"
                     size="icon"
-                    className="bg-white hover:border-black"
+                    className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
                   >
                     <Trash2Icon />
                   </Button>

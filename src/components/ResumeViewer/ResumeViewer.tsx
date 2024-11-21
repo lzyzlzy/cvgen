@@ -24,7 +24,7 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
       ref={ref as React.Ref<HTMLDivElement>}
       id="resume-content"
       className={cn(
-        "bg-white p-6 shadow-lg rounded-lg max-w-4xl w-full",
+        "dark:bg-slate-700 dark:shadow-sky-300 dark:text-white bg-white p-6 shadow-lg rounded-lg max-w-4xl w-full",
         className
       )}
       style={{ transform: `scale(${scale ?? 1})` }}
