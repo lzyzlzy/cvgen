@@ -30,9 +30,10 @@ function App() {
 
 function Root() {
   let { lang } = useParams();
+  console.log(lang)
   if (lang) {
     const localizationDispatch = UseLocalizationDispatch();
-    localizationDispatch;
+    localizationDispatch
     ({
       type: "changeLang",
       data: lang,

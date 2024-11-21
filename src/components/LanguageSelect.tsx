@@ -26,6 +26,7 @@ export function LanguageSelect() {
       <PopoverContent className="space-x-2 w-30">
         {SupportedLangs.map(([lang, display]) => (
           <Button
+            className="hover:border-black"
             key={"select_lang_" + lang}
             id={"select_lang_" + lang}
             variant="outline"
