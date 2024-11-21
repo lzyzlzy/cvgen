@@ -8,8 +8,9 @@ import { UseCv } from "./lib/hooks/CvContext";
 import { ResumeEditor } from "./components/ResumeEditor/ResumeEditor";
 import { ResumeViewer } from "./components/ResumeViewer/ResumeViewer";
 import { Cv } from "./core/CV";
-import { ActionBar } from "./components/ResumeViewer/ActionBar";
+import { ActionBar } from "./components/ActionBar";
 import { useRef, useState } from "react";
+import { LogoBar } from "./components/LogoBar";
 
 export default function Layout() {
   const isDesktop = useMediaQuery("(min-width: 640px)");
@@ -24,10 +25,11 @@ export default function Layout() {
     >
       <ResizablePanel
         collapsible={false}
-        defaultSize={22}
+        defaultSize={isDesktop ? 22 : 60}
         minSize={22}
         style={{ overflow: "auto" }}
       >
+        <LogoBar />
         <ResumeEditor />
       </ResizablePanel>
       <ResizableHandle withHandle />

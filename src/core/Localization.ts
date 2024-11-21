@@ -22,4 +22,6 @@ export interface TextKeyStore {
   education: string;
   projects: string;
   basic: string;
+  print: string;
+  generate_by_AI: string;
 }

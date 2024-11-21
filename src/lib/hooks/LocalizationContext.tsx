@@ -35,9 +35,14 @@ export function UseLocalizationDispatch() {
   return useContext(LocalizationDispatchContext);
 }
 
+export const SupportedLangs = [
+  ["en", "en"],
+  ["zh-cn", "中"],
+];
+
 const localizationStore = new Map([
   ["en", enLocalization],
-  ["cn", cnLocalization],
+  ["zh-cn", cnLocalization],
 ]);
 
 function localizationReducer(
@@ -45,7 +50,7 @@ function localizationReducer(
   action: ReduceAction
 ): Localization {
   switch (action.type) {
-    case "changeLocalization": {
+    case "changeLang": {
       const key = action.data as string;
 
       const newLocalization = localizationStore.get(key);

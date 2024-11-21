@@ -1,10 +1,11 @@
-import { PrinterIcon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
-import { Button } from "../ui/button";
+import { PrinterIcon, Wand2Icon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
+import { Button } from "./ui/button";
 import { useReactToPrint } from "react-to-print";
 import { RefObject } from "react";
 import { UseCv } from "@/lib/hooks/CvContext";
-import { Slider } from "../ui/slider";
+import { Slider } from "./ui/slider";
 import { cn } from "@/lib/utils";
+import { UseLocalization } from "@/lib/hooks/LocalizationContext";
 
 export function ActionBar({
   resumeRef,
@@ -18,6 +19,8 @@ export function ActionBar({
   setScale: (arg0: number) => void;
   className?: string;
 }) {
+  const localization = UseLocalization();
+  const textKeys = localization.textKeyStore;
   const cv = UseCv();
   const handlePrint = useReactToPrint({
     contentRef: resumeRef,
@@ -30,12 +33,12 @@ export function ActionBar({
   return (
     <header
       className={cn(
-        "w-full bg-white p-4 flex justify-between items-center",
+        "w-full bg-white p-4 flex justify-between items-center border-t flex-wrap",
         className
       )}
       {...props}
     >
-      <div className="flex flex-row items-center space-x-2">
+      <div className="hidden md:visible md:flex flex-row items-center space-x-2">
         <ZoomOutIcon />
         <Slider
           defaultValue={[100]}
@@ -48,9 +51,13 @@ export function ActionBar({
         <ZoomInIcon />
         {scale * 100}%
       </div>
+      <Button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-700 hover:border-none">
+        <Wand2Icon />
+        {textKeys.generate_by_AI}
+      </Button>
       <Button onClick={() => handlePrint()}>
         <PrinterIcon />
-        Print
+        {textKeys.print}
       </Button>
     </header>
   );
