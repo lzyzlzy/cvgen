@@ -25,16 +25,16 @@ export default function Layout() {
     >
       <ResizablePanel
         collapsible={false}
-        defaultSize={isDesktop ? 22 : 60}
+        defaultSize={isDesktop ? 30 : 60}
         minSize={22}
         style={{ overflow: "auto" }}
       >
         <LogoBar />
         <ResumeEditor />
       </ResizablePanel>
-      <ResizableHandle withHandle />
+      <ResizableHandle withHandle={!isDesktop} />
       <ResizablePanel className="static " style={{ overflow: "auto" }}>
-        <div className="flex flex-col items-center min-h-screen bg-gray-100 pb-6">
+        <div className="flex flex-col items-center min-h-screen bg-gray-100 pt-2 pb-6">
           <ResumeViewer
             ref={resumeRef}
             scale={scale}

@@ -23,6 +23,7 @@ export const enLocalization: Localization = {
     basic: "Basic",
     print: "Print",
     generate_by_AI: "Generate by AI",
+    change_lang: "Change Language",
   },
 };
 
@@ -49,6 +50,7 @@ export const cnLocalization: Localization = {
     basic: "基本信息",
     print: "打印",
     generate_by_AI: "AI生成简历",
+    change_lang: "更改语言",
   },
 };
 
@@ -75,6 +77,7 @@ export const jpLocalization: Localization = {
     basic: "基本情報",
     print: "印刷",
     generate_by_AI: "AIによる生成",
+    change_lang: "言語を変更する",
   },
   
 };
@@ -102,6 +105,7 @@ export const frLocalization: Localization = {
     basic: "Informations de base",
     print: "Imprimer",
     generate_by_AI: "Généré par l'IA",
+    change_lang: "Changer de langue",
   },
 };
 
@@ -128,6 +132,7 @@ export const esLocalization: Localization = {
     basic: "Información básica",
     print: "Imprimir",
     generate_by_AI: "Generado por IA",
+    change_lang: "Cambiar idioma",
   },
 };
 
@@ -154,5 +159,6 @@ export const ruLocalization: Localization = {
     basic: "Основная информация",
     print: "Печать",
     generate_by_AI: "Создано ИИ",
+    change_lang: "Сменить язык",
   },
 };

@@ -24,4 +24,5 @@ export interface TextKeyStore {
   basic: string;
   print: string;
   generate_by_AI: string;
+  change_lang: string;
 }

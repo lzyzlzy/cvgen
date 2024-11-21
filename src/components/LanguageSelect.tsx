@@ -1,12 +1,15 @@
 import {
   SupportedLangs,
+  UseLocalization,
   UseLocalizationDispatch,
 } from "@/lib/hooks/LocalizationContext";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { LanguagesIcon } from "lucide-react";
+import { SimpleTooltip } from "./SimpleTooltip";
 
 export function LanguageSelect() {
+  const localization = UseLocalization();
   const dispatch = UseLocalizationDispatch();
 
   const onChangeLang = (lang: string) => {
@@ -18,11 +21,13 @@ export function LanguageSelect() {
 
   return (
     <Popover>
-      <PopoverTrigger asChild>
-        <Button className="hover:border-none" variant="outline" size="icon">
-          <LanguagesIcon />
-        </Button>
-      </PopoverTrigger>
+      <SimpleTooltip content={localization.textKeyStore.change_lang}>
+        <PopoverTrigger asChild>
+          <Button className="hover:border-none" variant="outline" size="icon">
+            <LanguagesIcon />
+          </Button>
+        </PopoverTrigger>
+      </SimpleTooltip>
       <PopoverContent
         className={`space-x-2 w-${SupportedLangs.length * 10 + 10}`}
       >
