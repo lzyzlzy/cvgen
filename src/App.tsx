@@ -30,18 +30,17 @@ function App() {
 
 function Root() {
   let { lang } = useParams();
-  console.log(lang)
+  console.log(lang);
   if (lang) {
     const localizationDispatch = UseLocalizationDispatch();
-    localizationDispatch
-    ({
+    localizationDispatch({
       type: "changeLang",
       data: lang,
     });
   }
 
   return (
-    <div className="h-screen w-screen">
+    <div className="dark:bg-slate-800 dark:text-white h-screen w-screen">
       <Layout />
     </div>
   );

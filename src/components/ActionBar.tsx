@@ -33,7 +33,7 @@ export function ActionBar({
   return (
     <header
       className={cn(
-        "w-full bg-white p-4 flex justify-between items-center border-t flex-wrap",
+        " w-full bg-white p-4 flex justify-between items-center border-t flex-wrap",
         className
       )}
       {...props}
