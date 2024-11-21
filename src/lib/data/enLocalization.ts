@@ -21,11 +21,13 @@ export const enLocalization: Localization = {
     education: "Education",
     projects: "Projects",
     basic: "Basic",
+    print: "Print",
+    generate_by_AI: "Generate by AI",
   },
 };
 
 export const cnLocalization: Localization = {
-  name: "cn",
+  name: "zh-cn",
   textKeyStore: {
     school: "学校",
     day_of_birth: "出生日期",
@@ -45,5 +47,7 @@ export const cnLocalization: Localization = {
     education: "教育经历",
     projects: "项目经历",
     basic: "基本信息",
+    print: "打印",
+    generate_by_AI: "AI生成简历",
   },
 };
