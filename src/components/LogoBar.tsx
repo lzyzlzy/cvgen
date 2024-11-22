@@ -2,6 +2,7 @@ import { Github, Moon, Sun } from "lucide-react";
 import { LanguageSelect } from "./LanguageSelect";
 import { Button } from "./ui/button";
 import { SimpleTooltip } from "./SimpleTooltip";
+import "./LogoBar.css";
 
 export function LogoBar({
   setDark,
@@ -12,7 +13,9 @@ export function LogoBar({
 }) {
   return (
     <div className="dark:bg-slate-900 dark:text-white dark:border-white border-b px-6 py-2 sticky top-0 w-full bg-white flex flex-row justify-between items-center">
-      <div className="font-sans text-3xl font-bold">CVGEN</div>
+      <div className="font-sans text-3xl font-bold text-gradient">
+        XRESUME
+      </div>
       <div className="space-x-2">
         <DarkModeToggle isDark={isDark} setDark={setDark} />
         <LanguageSelect />
