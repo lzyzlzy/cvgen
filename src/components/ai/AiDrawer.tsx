@@ -1,4 +1,5 @@
 import { Button } from "../ui/button";
+import "../../styles/globals.css"
 import {
   Drawer,
   DrawerClose,
@@ -14,6 +15,7 @@ import { useRef, useState } from "react";
 import { getCvByInput } from "@/lib/ai/typeChatService";
 import { UseCvDispatch } from "@/hooks/CvContext";
 import { toast } from "@/hooks/use-toast";
+
 
 export function AiDrawer() {
   const localization = UseLocalization();
@@ -43,7 +45,7 @@ export function AiDrawer() {
   return (
     <Drawer>
       <DrawerTrigger asChild>
-        <Button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-700 hover:border-none">
+        <Button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 animate-gradient-x hover:from-violet-700 hover:to-fuchsia-700 hover:border-none glow-effect">
           {localization.textKeyStore.generate_by_AI}
         </Button>
       </DrawerTrigger>
@@ -65,7 +67,7 @@ export function AiDrawer() {
           </div>
           <DrawerFooter>
             <Button
-              className="bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-700 hover:border-none"
+              className="bg-gradient-to-r from-violet-500 to-fuchsia-500 animate-gradient-x hover:from-violet-700 hover:to-fuchsia-700 hover:border-none"
               onClick={handleSubmit}
             >
               Submit

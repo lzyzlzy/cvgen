@@ -1,0 +1,39 @@
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  33% {
+    background-position: 50% 50%;
+  }
+  66% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 5s ease infinite;
+}
+
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px rgba(238, 130, 238, 0.8), 0 0 20px rgba(238, 130, 238, 0.6), 0 0 30px rgba(238, 130, 238, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(238, 130, 238, 0.8), 0 0 30px rgba(238, 130, 238, 0.6), 0 0 40px rgba(238, 130, 238, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(238, 130, 238, 0.8), 0 0 20px rgba(238, 130, 238, 0.6), 0 0 30px rgba(238, 130, 238, 0.4);
+  }
+}
+
+.glow-effect {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.glow-effect:hover {
+  box-shadow: 0 0 20px rgba(238, 130, 238, 1), 0 0 40px rgba(238, 130, 238, 0.8), 0 0 60px rgba(238, 130, 238, 0.6);
+}
