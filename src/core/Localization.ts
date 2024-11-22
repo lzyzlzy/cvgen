@@ -26,4 +26,6 @@ export interface TextKeyStore {
   generate_by_AI: string;
   change_lang: string;
   ai_drawer_title: string;
+  cancel: string;
+  submit: string;
 }
