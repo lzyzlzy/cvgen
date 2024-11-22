@@ -1,7 +1,7 @@
 import { Localization } from "@/core/Localization";
 import ReduceAction from "@/core/ReduceAction";
 import { createContext, ReactNode, useContext, useReducer } from "react";
-import { cnLocalization, enLocalization, frLocalization, jpLocalization, esLocalization, ruLocalization } from "../data/enLocalization";
+import { cnLocalization, enLocalization, frLocalization, jpLocalization, esLocalization, ruLocalization } from "../lib/data/enLocalization";
 
 const defaultLocalization = enLocalization;
 

@@ -34,6 +34,9 @@ export function UseCvDispatch() {
 
 function cvReducer(state: Cv, action: ReduceAction): Cv {
   switch (action.type) {
+    case "setNewCv": {
+      return { ...(action.data as Cv) };
+    }
     case "setName": {
       return { ...state, name: action.data };
     }

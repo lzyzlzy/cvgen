@@ -24,6 +24,7 @@ export const enLocalization: Localization = {
     print: "Print",
     generate_by_AI: "Generate by AI",
     change_lang: "Change Language",
+    ai_drawer_title: "Please tell AI about yourself.",
   },
 };
 
@@ -50,7 +51,8 @@ export const cnLocalization: Localization = {
     basic: "基本信息",
     print: "打印",
     generate_by_AI: "AI生成简历",
-    change_lang: "更改语言",
+    change_lang: "切换语言",
+    ai_drawer_title: "请告诉AI关于你自己的信息。",
   },
 };
 
@@ -77,9 +79,9 @@ export const jpLocalization: Localization = {
     basic: "基本情報",
     print: "印刷",
     generate_by_AI: "AIによる生成",
-    change_lang: "言語を変更する",
+    change_lang: "言語を変更",
+    ai_drawer_title: "AIに自分について教えてください。",
   },
-  
 };
 
 export const frLocalization: Localization = {
@@ -106,6 +108,7 @@ export const frLocalization: Localization = {
     print: "Imprimer",
     generate_by_AI: "Généré par l'IA",
     change_lang: "Changer de langue",
+    ai_drawer_title: "Veuillez dire à l'IA à propos de vous-même.",
   },
 };
 
@@ -133,6 +136,7 @@ export const esLocalization: Localization = {
     print: "Imprimir",
     generate_by_AI: "Generado por IA",
     change_lang: "Cambiar idioma",
+    ai_drawer_title: "Por favor, cuéntale a la IA sobre ti mismo.",
   },
 };
 
@@ -160,5 +164,6 @@ export const ruLocalization: Localization = {
     print: "Печать",
     generate_by_AI: "Создано ИИ",
     change_lang: "Сменить язык",
+    ai_drawer_title: "Пожалуйста, расскажите ИИ о себе.",
   },
 };
