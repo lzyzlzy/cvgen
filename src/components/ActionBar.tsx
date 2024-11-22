@@ -1,11 +1,12 @@
-import { PrinterIcon, Wand2Icon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
+import { PrinterIcon, ZoomInIcon, ZoomOutIcon } from "lucide-react";
 import { Button } from "./ui/button";
 import { useReactToPrint } from "react-to-print";
 import { RefObject } from "react";
-import { UseCv } from "@/lib/hooks/CvContext";
+import { UseCv } from "@/hooks/CvContext";
 import { Slider } from "./ui/slider";
 import { cn } from "@/lib/utils";
-import { UseLocalization } from "@/lib/hooks/LocalizationContext";
+import { UseLocalization } from "@/hooks/LocalizationContext";
+import { AiDrawer } from "./ai/AiDrawer";
 
 export function ActionBar({
   resumeRef,
@@ -51,10 +52,7 @@ export function ActionBar({
         <ZoomInIcon />
         {scale * 100}%
       </div>
-      <Button className="bg-gradient-to-r from-violet-500 to-fuchsia-500 hover:from-violet-700 hover:to-fuchsia-700 hover:border-none">
-        <Wand2Icon />
-        {textKeys.generate_by_AI}
-      </Button>
+      <AiDrawer />
       <Button onClick={() => handlePrint()}>
         <PrinterIcon />
         {textKeys.print}

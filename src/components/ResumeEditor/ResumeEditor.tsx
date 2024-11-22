@@ -1,15 +1,14 @@
 import { useCallback } from "react";
-import { UseCv, UseCvDispatch } from "@/lib/hooks/CvContext";
+import { UseCv, UseCvDispatch } from "@/hooks/CvContext";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { Cv } from "@/core/CV";
 import { BlockTitle } from "./BlockTitle";
-import { DatePicker } from "../ui/date-picker";
 import { Button } from "../ui/button";
 import { PlusIcon, Trash2Icon } from "lucide-react";
 import { Separator } from "../ui/separator";
 import { Textarea } from "../ui/textarea";
-import { UseLocalization } from "@/lib/hooks/LocalizationContext";
+import { UseLocalization } from "@/hooks/LocalizationContext";
 
 export function ResumeEditor() {
   const currentCV = UseCv();
@@ -49,15 +48,7 @@ export function ResumeEditor() {
         <BlockTitle title={textKeyStore.basic} />
         {renderInputTextField(textKeyStore.name, "name")}
         {renderInputTextField(textKeyStore.job_title, "jobTitle")}
-        <div className="w-full items-center">
-          <Label htmlFor="birth">{textKeyStore?.day_of_birth}</Label>
-          <DatePicker
-            id="birth"
-            className="w-full"
-            selected={currentCV?.birthday}
-            onSelectDate={(e) => cvDispatch({ type: "setBirth", data: e })}
-          />
-        </div>
+        {renderInputTextField(textKeyStore.day_of_birth, "birthday")}
         {renderInputTextField(textKeyStore.email, "email", "email")}
         {renderInputTextField(textKeyStore.phone_number, "phoneNumber")}
         {renderInputTextField(textKeyStore.website, "website")}
@@ -126,30 +117,30 @@ export function ResumeEditor() {
                     <Label htmlFor={inputEduFromDateId}>
                       {textKeyStore.from}
                     </Label>
-                    <DatePicker
-                      className="w-full"
+                    <Input
                       id={inputEduFromDateId}
-                      selected={edu.from}
-                      onSelectDate={(e) => {
-                        edu.from = e;
+                      placeholder={textKeyStore.from}
+                      value={edu.from ?? ""}
+                      onChange={(e) => {
+                        edu.from = e.target.value;
                         cvDispatch({
                           type: "updateEducationItem",
-                          data: e,
+                          data: { index: i, value: edu },
                         });
                       }}
                     />
                   </div>
                   <div className="w-auto">
                     <Label htmlFor={inputEduToDateId}>{textKeyStore.to}</Label>
-                    <DatePicker
-                      className="w-full"
+                    <Input
                       id={inputEduToDateId}
-                      selected={edu.to}
-                      onSelectDate={(e) => {
-                        edu.to = e;
+                      placeholder={textKeyStore.to}
+                      value={edu.to ?? ""}
+                      onChange={(e) => {
+                        edu.to = e.target.value;
                         cvDispatch({
                           type: "updateEducationItem",
-                          data: e,
+                          data: { index: i, value: edu },
                         });
                       }}
                     />
@@ -258,30 +249,30 @@ export function ResumeEditor() {
                     <Label htmlFor={inputExpFromDateId}>
                       {textKeyStore.from}
                     </Label>
-                    <DatePicker
-                      className="w-full"
+                    <Input
                       id={inputExpFromDateId}
-                      selected={exp.from}
-                      onSelectDate={(e) => {
-                        exp.from = e;
+                      placeholder={textKeyStore.from}
+                      value={exp.from ?? ""}
+                      onChange={(e) => {
+                        exp.from = e.target.value;
                         cvDispatch({
                           type: "updateExperienceItem",
-                          data: e,
+                          data: { index: i, value: exp },
                         });
                       }}
                     />
                   </div>
                   <div className="w-auto">
                     <Label htmlFor={inputExpToDateId}>{textKeyStore.to}</Label>
-                    <DatePicker
-                      className="w-full"
+                    <Input
                       id={inputExpToDateId}
-                      selected={exp.to}
-                      onSelectDate={(e) => {
-                        exp.to = e;
+                      placeholder={textKeyStore.to}
+                      value={exp.to ?? ""}
+                      onChange={(e) => {
+                        exp.to = e.target.value;
                         cvDispatch({
                           type: "updateExperienceItem",
-                          data: e,
+                          data: { index: i, value: exp },
                         });
                       }}
                     />

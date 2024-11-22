@@ -4,7 +4,7 @@ import {
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
 import { useMediaQuery } from "@uidotdev/usehooks";
-import { UseCv } from "./lib/hooks/CvContext";
+import { UseCv } from "./hooks/CvContext";
 import { ResumeEditor } from "./components/ResumeEditor/ResumeEditor";
 import { ResumeViewer } from "./components/ResumeViewer/ResumeViewer";
 import { Cv } from "./core/CV";

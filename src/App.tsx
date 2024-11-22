@@ -1,10 +1,11 @@
 import "./App.css";
+import { Toaster } from "./components/ui/toaster";
 import Layout from "./Layout";
-import { CvProvider } from "./lib/hooks/CvContext";
+import { CvProvider } from "./hooks/CvContext";
 import {
   LocalizationProvider,
   UseLocalizationDispatch,
-} from "./lib/hooks/LocalizationContext";
+} from "./hooks/LocalizationContext";
 import {
   createBrowserRouter,
   RouterProvider,
@@ -42,6 +43,7 @@ function Root() {
   return (
     <div className="dark:bg-slate-800 dark:text-white h-screen w-screen">
       <Layout />
+      <Toaster />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 export interface Cv {
   name: string;
-  birthday?: Date;
+  birthday?: string;
   phoneNumber: string;
   jobTitle: string;
   email: string;
@@ -16,8 +16,8 @@ export interface CvEvent {
   title?: string;
   subTitle?: string;
   content: string;
-  from?: Date | undefined;
-  to?: Date | undefined;
+  from?: string;
+  to?: string;
   url?: string;
 }
 export interface LanguagesSkill {

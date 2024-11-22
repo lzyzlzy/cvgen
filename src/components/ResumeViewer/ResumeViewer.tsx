@@ -1,8 +1,7 @@
 import { Cv } from "@/core/CV";
 import { forwardRef } from "react";
-import { format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { UseLocalization } from "@/lib/hooks/LocalizationContext";
+import { UseLocalization } from "@/hooks/LocalizationContext";
 
 export const ResumeViewer = forwardRef(function ResumeViewer(
   {
@@ -57,7 +56,7 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
               <p className="italic">{exp.subTitle}</p>
               <p>{exp.content}</p>
               <p>
-                {formatDate(exp.from)} - {formatDate(exp.to)}
+                {exp.from} - {exp.to}
               </p>
               {exp.url && <a href={exp.url}>{exp.url}</a>}
             </div>
@@ -89,7 +88,7 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
               <p className="italic">{edu.subTitle}</p>
               <p>{edu.content}</p>
               <p>
-                {formatDate(edu.from)} - {formatDate(edu.to)}
+                {edu.from} - {edu.to}
               </p>
               {edu.url && <a href={edu.url}>{edu.url}</a>}
             </div>
@@ -116,7 +115,3 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
     </div>
   );
 });
-
-function formatDate(date?: Date): string {
-  return date ? format(date, "y/MM") : "";
-}
