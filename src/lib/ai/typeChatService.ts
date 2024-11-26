@@ -1,4 +1,4 @@
-import { Cv } from "@/core/CV";
+import { Cv, schema } from "@/core/CV";
 import * as typechat from "typechat";
 import { createTypeScriptJsonValidator } from "typechat/ts";
 
@@ -29,32 +29,3 @@ export async function getCvByInput(input: string): Promise<Cv | string> {
   return response.data;
 }
 
-const schema = `
-export interface Cv {
-  name: string;
-  birthday?: string;
-  phoneNumber: string;
-  jobTitle: string;
-  email: string;
-  website?: string;
-  github?: string;
-  experiences: CvEvent[];
-  skills: string[];
-  educations: CvEvent[];
-  languages?: LanguagesSkill[];
-  projects: CvEvent[];
-}
-export interface CvEvent {
-  title?: string;
-  subTitle?: string;
-  content: string;
-  from?: string;
-  to?: string;
-  url?: string;
-}
-export interface LanguagesSkill {
-  name: string;
-  level: string;
-}
-
-  `;
