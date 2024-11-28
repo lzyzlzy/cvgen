@@ -43,7 +43,7 @@ export const cnLocalization: Localization = {
     job_title: "职位",
     experience: "工作经验",
     content: "内容",
-    name: "姓名",
+    name: "名称",
     phone_number: "电话号码",
     email: "email",
     website: "网址",
