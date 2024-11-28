@@ -27,6 +27,7 @@ export const enLocalization: Localization = {
     ai_drawer_title: "Please tell AI about yourself.",
     submit: "Submit",
     cancel: "Cancel",
+    link: "Link",
   },
 };
 
@@ -57,6 +58,7 @@ export const cnLocalization: Localization = {
     ai_drawer_title: "请告诉AI关于你自己的信息。",
     submit: "提交",
     cancel: "取消",
+    link: "链接",
   },
 };
 
@@ -87,6 +89,7 @@ export const jpLocalization: Localization = {
     ai_drawer_title: "AIに自分について教えてください。",
     submit: "送信",
     cancel: "キャンセル",
+    link: "リンク",
   },
 };
 
@@ -117,6 +120,7 @@ export const frLocalization: Localization = {
     ai_drawer_title: "Veuillez dire à l'IA à propos de vous-même.",
     submit: "Soumettre",
     cancel: "Annuler",
+    link: "Lien",
   },
 };
 
@@ -147,6 +151,7 @@ export const esLocalization: Localization = {
     ai_drawer_title: "Por favor, cuéntale a la IA sobre ti mismo.",
     submit: "Enviar",
     cancel: "Cancelar",
+    link: "Enlace",
   },
 };
 
@@ -177,5 +182,6 @@ export const ruLocalization: Localization = {
     ai_drawer_title: "Пожалуйста, расскажите ИИ о себе.",
     submit: "Отправить",
     cancel: "Отмена",
+    link: "Ссылка",
   },
 };

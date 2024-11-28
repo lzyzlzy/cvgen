@@ -54,13 +54,12 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
         {data.experiences && data.experiences.length > 0 ? (
           data.experiences.map((exp, index) => (
             <div key={index} className="mb-4">
-              <h3 className="text-xl font-bold">{exp.title}</h3>
-              <p className="italic">{exp.subTitle}</p>
-              <p>{exp.content}</p>
+              <h3 className="text-xl font-bold">{exp.company}</h3>
+              <p className="italic">{exp.jobTitle}</p>
               <p>
                 {exp.from} - {exp.to}
               </p>
-              {exp.url && <a href={exp.url}>{exp.url}</a>}
+              <p>{exp.content}</p>
             </div>
           ))
         ) : (
@@ -86,13 +85,12 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
         {data.educations && data.educations.length > 0 ? (
           data.educations.map((edu, index) => (
             <div key={index} className="mb-1">
-              <p className="text-xl font-bold">{edu.title}</p>
-              <p className="italic">{edu.subTitle}</p>
-              <p>{edu.content}</p>
+              <p className="text-xl font-bold">{edu.school}</p>
+              <p className="italic">{edu.major}</p>
               <p>
                 {edu.from} - {edu.to}
               </p>
-              {edu.url && <a href={edu.url}>{edu.url}</a>}
+              <p>{edu.content}</p>
             </div>
           ))
         ) : (
@@ -104,10 +102,9 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
         {data.projects && data.projects.length > 0 ? (
           data.projects.map((project, index) => (
             <div key={index} className="mb-1">
-              <h3 className="text-xl font-bold">{project.title}</h3>
-              <p className="italic">{project.subTitle}</p>
+              <h3 className="text-xl font-bold">{project.name}</h3>
               <p>{project.content}</p>
-              {project.url && <a href={project.url}>{project.url}</a>}
+              {project.link && <a href={project.link}>{project.link}</a>}
             </div>
           ))
         ) : (

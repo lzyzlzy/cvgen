@@ -1,17 +1,17 @@
-import { CvEvent } from "@/core/CV";
+import { CvProject } from "@/core/CV";
 import { UseCvDispatch } from "@/hooks/CvContext";
 import { UseLocalization } from "@/hooks/LocalizationContext";
 import { memo } from "react";
 import { BlockTitleWithPlusButton } from "./ui/BlockTitle";
-import { InputWithLabel } from "../ui/InputWithLabel";
-import { TextareaWithLabel } from "../ui/TextareaWithLabel";
+import { InputWithLabel } from "../ui/inputWithLabel";
+import { TextareaWithLabel } from "../ui/textareaWithLabel";
 import { IterableContent } from "./ui/IterableContent";
 import { EditorRowWrapper } from "./ui/EditorRowWrapper";
 
 export const Project = memo(function Project({
   projects,
 }: {
-  projects?: CvEvent[];
+  projects?: CvProject[];
 }) {
   const cvDispatch = UseCvDispatch();
   const localization = UseLocalization();
@@ -38,6 +38,7 @@ export const Project = memo(function Project({
         render={(proj, i) => {
           const inputProjTitleId = "proj_title_input_" + i;
           const inputProjContentId = "proj_Content_input_" + i;
+          const inputProjUrlId = "proj_url_input_" + i;
           return (
             <>
               <EditorRowWrapper>
@@ -45,9 +46,24 @@ export const Project = memo(function Project({
                   labelName={textKeyStore.name}
                   id={inputProjTitleId}
                   placeholder={textKeyStore.name}
-                  value={proj.title ?? ""}
+                  value={proj.name ?? ""}
                   onChange={(e) => {
-                    proj.title = e.target.value;
+                    proj.name = e.target.value;
+                    cvDispatch({
+                      type: "updateProject",
+                      data: { index: i, value: proj },
+                    });
+                  }}
+                />
+              </EditorRowWrapper>
+              <EditorRowWrapper>
+                <InputWithLabel
+                  labelName={textKeyStore.link}
+                  id={inputProjUrlId}
+                  placeholder={textKeyStore.link}
+                  value={proj.link ?? ""}
+                  onChange={(e) => {
+                    proj.link = e.target.value;
                     cvDispatch({
                       type: "updateProject",
                       data: { index: i, value: proj },

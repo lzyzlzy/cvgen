@@ -1,4 +1,4 @@
-import { InputWithLabel } from "@/components/ui/InputWithLabel";
+import { InputWithLabel } from "@/components/ui/inputWithLabel";
 import { UseLocalization } from "@/hooks/LocalizationContext";
 
 interface DateTextInputOption {

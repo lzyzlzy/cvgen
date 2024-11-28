@@ -1,5 +1,5 @@
 import { Github, Moon, Sun } from "lucide-react";
-import { LanguageSelect } from "./LanguageSelect";
+import { LanguageSelector } from "./LanguageSelector";
 import { Button } from "./ui/button";
 import { SimpleTooltip } from "./SimpleTooltip";
 import "./LogoBar.css";
@@ -18,7 +18,7 @@ export function LogoBar({
       </div>
       <div className="space-x-2">
         <DarkModeToggle isDark={isDark} setDark={setDark} />
-        <LanguageSelect />
+        <LanguageSelector />
         <GithubButton />
       </div>
     </div>

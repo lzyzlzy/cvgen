@@ -8,7 +8,7 @@ import { Button } from "./ui/button";
 import { LanguagesIcon } from "lucide-react";
 import { SimpleTooltip } from "./SimpleTooltip";
 
-export function LanguageSelect() {
+export function LanguageSelector() {
   const localization = UseLocalization();
   const dispatch = UseLocalizationDispatch();
 

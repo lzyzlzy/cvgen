@@ -1,10 +1,10 @@
-import { CvEvent } from "@/core/CV";
+import { CvExperience } from "@/core/CV";
 import { memo } from "react";
 import { BlockTitleWithPlusButton } from "./ui/BlockTitle";
 import { UseCvDispatch } from "@/hooks/CvContext";
 import { UseLocalization } from "@/hooks/LocalizationContext";
-import { InputWithLabel } from "../ui/InputWithLabel";
-import { TextareaWithLabel } from "../ui/TextareaWithLabel";
+import { InputWithLabel } from "../ui/inputWithLabel";
+import { TextareaWithLabel } from "../ui/textareaWithLabel";
 import { IterableContent } from "./ui/IterableContent";
 import { EditorRowWrapper } from "./ui/EditorRowWrapper";
 import { DurationInput } from "./ui/DurationInput";
@@ -12,7 +12,7 @@ import { DurationInput } from "./ui/DurationInput";
 export const Experience = memo(function Experience({
   experiences,
 }: {
-  experiences?: CvEvent[];
+  experiences?: CvExperience[];
 }) {
   const cvDispatch = UseCvDispatch();
   const localization = UseLocalization();
@@ -48,9 +48,9 @@ export const Experience = memo(function Experience({
                   labelName={textKeyStore.company}
                   id={inputExpTitleId}
                   placeholder={textKeyStore.company}
-                  value={exp.title ?? ""}
+                  value={exp.company ?? ""}
                   onChange={(e) => {
-                    exp.title = e.target.value;
+                    exp.company = e.target.value;
                     cvDispatch({
                       type: "updateExperienceItem",
                       data: { index: i, value: exp },
@@ -63,9 +63,9 @@ export const Experience = memo(function Experience({
                   labelName={textKeyStore.job_title}
                   id={inputExpSubtitleId}
                   placeholder={textKeyStore.job_title}
-                  value={exp.subTitle ?? ""}
+                  value={exp.jobTitle ?? ""}
                   onChange={(e) => {
-                    exp.subTitle = e.target.value;
+                    exp.jobTitle = e.target.value;
                     cvDispatch({
                       type: "updateExperienceItem",
                       data: { index: i, value: exp },

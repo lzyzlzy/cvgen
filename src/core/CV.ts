@@ -1,13 +1,35 @@
 export interface Cv {
-  basic: Basic;
-  experiences: CvEvent[];
+  basic: CvBasic;
+  experiences: CvExperience[];
   skills: string[];
-  educations: CvEvent[];
-  languages?: LanguagesSkill[];
-  projects: CvEvent[];
+  educations: CvEducation[];
+  // languages?: LanguagesSkill[];
+  projects: CvProject[];
 }
 
-export interface Basic {
+export interface CvProject {
+  name: string;
+  content: string;
+  link?: string;
+}
+
+export interface CvEducation {
+  school: string;
+  from: string;
+  to: string;
+  major: string;
+  content: string;
+}
+
+export interface CvExperience {
+  company: string;
+  jobTitle: string;
+  from: string;
+  to: string;
+  content: string;
+}
+
+export interface CvBasic {
   name: string;
   birthday?: string;
   phoneNumber: string;
@@ -17,14 +39,6 @@ export interface Basic {
   github?: string;
 }
 
-export interface CvEvent {
-  title?: string;
-  subTitle?: string;
-  content: string;
-  from?: string;
-  to?: string;
-  url?: string;
-}
 export interface LanguagesSkill {
   name: string;
   level: string;
@@ -32,15 +46,37 @@ export interface LanguagesSkill {
 
 export const schema = `
 export interface Cv {
-  basic: Basic;
-  experiences: CvEvent[];
+  basic: CvBasic;
+  experiences: CvExperience[];
   skills: string[];
-  educations: CvEvent[];
-  languages?: LanguagesSkill[];
-  projects: CvEvent[];
+  educations: CvEducation[];
+  // languages?: LanguagesSkill[];
+  projects: CvProject[];
 }
 
-export interface Basic {
+export interface CvProject {
+  name: string;
+  content: string;
+  link?: string;
+}
+
+export interface CvEducation {
+  school: string;
+  from: string;
+  to: string;
+  major: string;
+  content: string;
+}
+
+export interface CvExperience {
+  company: string;
+  jobTitle: string;
+  from: string;
+  to: string;
+  content: string;
+}
+
+export interface CvBasic {
   name: string;
   birthday?: string;
   phoneNumber: string;
@@ -50,14 +86,6 @@ export interface Basic {
   github?: string;
 }
 
-export interface CvEvent {
-  title?: string;
-  subTitle?: string;
-  content: string;
-  from?: string;
-  to?: string;
-  url?: string;
-}
 export interface LanguagesSkill {
   name: string;
   level: string;
