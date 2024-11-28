@@ -8,6 +8,7 @@ export interface TextKeyStore {
   school: string;
   from: string;
   to: string;
+  link: string;
   major: string;
   company: string;
   job_title: string;

@@ -27,7 +27,7 @@ export function ActionBar({
     contentRef: resumeRef,
     pageStyle:
       "body { transform-origin: top left; box-shadow: unset; margin: unset; transform: scale(1); -webkit-print-color-adjust: exact !important;  color-adjust: exact !important; print-color-adjust: exact !important; }",
-    documentTitle: cv?.name,
+    documentTitle: cv?.basic.name,
     onAfterPrint: () => console.log("printed"),
   });
 

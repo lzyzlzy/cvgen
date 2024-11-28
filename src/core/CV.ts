@@ -1,4 +1,35 @@
 export interface Cv {
+  basic: CvBasic;
+  experiences: CvExperience[];
+  skills: string[];
+  educations: CvEducation[];
+  // languages?: LanguagesSkill[];
+  projects: CvProject[];
+}
+
+export interface CvProject {
+  name: string;
+  content: string;
+  link?: string;
+}
+
+export interface CvEducation {
+  school: string;
+  from: string;
+  to: string;
+  major: string;
+  content: string;
+}
+
+export interface CvExperience {
+  company: string;
+  jobTitle: string;
+  from: string;
+  to: string;
+  content: string;
+}
+
+export interface CvBasic {
   name: string;
   birthday?: string;
   phoneNumber: string;
@@ -6,21 +37,57 @@ export interface Cv {
   email: string;
   website?: string;
   github?: string;
-  experiences: CvEvent[];
-  skills: string[];
-  educations: CvEvent[];
-  languages?: LanguagesSkill[];
-  projects: CvEvent[];
 }
-export interface CvEvent {
-  title?: string;
-  subTitle?: string;
-  content: string;
-  from?: string;
-  to?: string;
-  url?: string;
-}
+
 export interface LanguagesSkill {
   name: string;
   level: string;
 }
+
+export const schema = `
+export interface Cv {
+  basic: CvBasic;
+  experiences: CvExperience[];
+  skills: string[];
+  educations: CvEducation[];
+  // languages?: LanguagesSkill[];
+  projects: CvProject[];
+}
+
+export interface CvProject {
+  name: string;
+  content: string;
+  link?: string;
+}
+
+export interface CvEducation {
+  school: string;
+  from: string;
+  to: string;
+  major: string;
+  content: string;
+}
+
+export interface CvExperience {
+  company: string;
+  jobTitle: string;
+  from: string;
+  to: string;
+  content: string;
+}
+
+export interface CvBasic {
+  name: string;
+  birthday?: string;
+  phoneNumber: string;
+  jobTitle: string;
+  email: string;
+  website?: string;
+  github?: string;
+}
+
+export interface LanguagesSkill {
+  name: string;
+  level: string;
+}
+`;
