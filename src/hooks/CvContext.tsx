@@ -38,25 +38,25 @@ function cvReducer(state: Cv, action: ReduceAction): Cv {
       return { ...(action.data as Cv) };
     }
     case "setName": {
-      return { ...state, name: action.data };
+      return { ...state, basic: { ...state.basic, name: action.data } };
     }
     case "setEmail": {
-      return { ...state, email: action.data };
+      return { ...state, basic: { ...state.basic, email: action.data } };
     }
     case "setJobTitle": {
-      return { ...state, jobTitle: action.data };
+      return { ...state, basic: { ...state.basic, jobTitle: action.data } };
     }
     case "setPhoneNumber": {
-      return { ...state, phoneNumber: action.data };
+      return { ...state, basic: { ...state.basic, phoneNumber: action.data } };
     }
     case "setWebsite": {
-      return { ...state, website: action.data };
+      return { ...state, basic: { ...state.basic, website: action.data } };
     }
     case "setGithub": {
-      return { ...state, github: action.data };
+      return { ...state, basic: { ...state.basic, github: action.data } };
     }
     case "setBirth": {
-      return { ...state, birthday: action.data };
+      return { ...state, basic: { ...state.basic, birthday: action.data } };
     }
     case "addEducation": {
       return {

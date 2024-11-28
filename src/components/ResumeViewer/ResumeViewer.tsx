@@ -29,20 +29,22 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
       style={{ transform: `scale(${scale ?? 1})` }}
     >
       <header className="mb-1 text-left">
-        <h1 className="text-3xl font-bold">{data.name}</h1>
-        <p className="text-xl">{data.jobTitle}</p>
-        <p>{data.email}</p>
-        <p>{data.phoneNumber}</p>
-        {data.website && (
+        <h1 className="text-3xl font-bold">{data.basic.name}</h1>
+        <p className="text-xl">{data.basic.jobTitle}</p>
+        <p>{data.basic.email}</p>
+        <p>{data.basic.phoneNumber}</p>
+        {data.basic.website && (
           <p>
-            <a href={data.website}>
-              {data.website.replace(/^https?:\/\//, "")}
+            <a href={data.basic.website}>
+              {data.basic.website.replace(/^https?:\/\//, "")}
             </a>
           </p>
         )}
-        {data.github && (
+        {data.basic.github && (
           <p>
-            <a href={data.github}>{data.github.replace(/^https?:\/\//, "")}</a>
+            <a href={data.basic.github}>
+              {data.basic.github.replace(/^https?:\/\//, "")}
+            </a>
           </p>
         )}
       </header>

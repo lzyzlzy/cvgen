@@ -1,4 +1,13 @@
 export interface Cv {
+  basic: Basic;
+  experiences: CvEvent[];
+  skills: string[];
+  educations: CvEvent[];
+  languages?: LanguagesSkill[];
+  projects: CvEvent[];
+}
+
+export interface Basic {
   name: string;
   birthday?: string;
   phoneNumber: string;
@@ -6,12 +15,8 @@ export interface Cv {
   email: string;
   website?: string;
   github?: string;
-  experiences: CvEvent[];
-  skills: string[];
-  educations: CvEvent[];
-  languages?: LanguagesSkill[];
-  projects: CvEvent[];
 }
+
 export interface CvEvent {
   title?: string;
   subTitle?: string;
@@ -27,6 +32,15 @@ export interface LanguagesSkill {
 
 export const schema = `
 export interface Cv {
+  basic: Basic;
+  experiences: CvEvent[];
+  skills: string[];
+  educations: CvEvent[];
+  languages?: LanguagesSkill[];
+  projects: CvEvent[];
+}
+
+export interface Basic {
   name: string;
   birthday?: string;
   phoneNumber: string;
@@ -34,12 +48,8 @@ export interface Cv {
   email: string;
   website?: string;
   github?: string;
-  experiences: CvEvent[];
-  skills: string[];
-  educations: CvEvent[];
-  languages?: LanguagesSkill[];
-  projects: CvEvent[];
 }
+
 export interface CvEvent {
   title?: string;
   subTitle?: string;

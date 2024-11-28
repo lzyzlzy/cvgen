@@ -1,13 +1,15 @@
 import { Cv } from "@/core/CV";
 
 export const defaultResume: Cv = {
-  name: "John Doe",
-  birthday: "1990-01-01",
-  phoneNumber: "123-456-7890",
-  jobTitle: "Software Engineer",
-  email: "john.doe@example.com",
-  website: "https://johndoe.com",
-  github: "https://github.com/johndoe",
+  basic: {
+    name: "John Doe",
+    birthday: "1990-01-01",
+    phoneNumber: "123-456-7890",
+    jobTitle: "Software Engineer",
+    email: "john.doe@example.com",
+    website: "https://johndoe.com",
+    github: "https://github.com/johndoe",
+  },
   educations: [
     {
       title: "University of Technology",
