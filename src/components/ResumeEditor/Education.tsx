@@ -1,11 +1,12 @@
 import { UseCvDispatch } from "@/hooks/CvContext";
 import { UseLocalization } from "@/hooks/LocalizationContext";
 import { memo } from "react";
-import { BlockTitleWithPlusButton } from "./BlockTitle";
-import { Trash2Icon } from "lucide-react";
-import { Button } from "../ui/button";
+import { BlockTitleWithPlusButton } from "./ui/BlockTitle";
 import { CvEvent } from "@/core/CV";
 import { InputWithLabel } from "../ui/InputWithLabel";
+import { IterableContent } from "./ui/IterableContent";
+import { EditorRowWrapper } from "./ui/EditorRowWrapper";
+import { DurationInput } from "./ui/DurationInput";
 
 export const Education = memo(function Education({
   educations,
@@ -26,34 +27,21 @@ export const Education = memo(function Education({
           })
         }
       />
-      <div>
-        {educations?.map((edu, i) => {
+      <IterableContent
+        source={educations}
+        onTrashClick={(edu) =>
+          cvDispatch({
+            type: "removeEducationItem",
+            data: edu,
+          })
+        }
+        render={(edu, i) => {
           const inputEduTitleId = "edu_title_input_" + i;
           const inputEduMajorId = "edu_major_input_" + i;
-          const inputEduFromDateId = "edu_from_input_" + i;
-          const inputEduToDateId = "edu_to_input_" + i;
+          const inputEduDateId = "edu_date_input_" + i;
           return (
-            <div
-              className="dark:border-white border-t-2 mb-2 hover:shadow-xl"
-              key={"edu_item_" + i}
-            >
-              <div className="flex flex-row justify-between items-center">
-                <p className="text-md font-bold">{i + 1}.</p>
-                <Button
-                  onClick={() =>
-                    cvDispatch({
-                      type: "removeEducationItem",
-                      data: edu,
-                    })
-                  }
-                  variant="ghost"
-                  size="icon"
-                  className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
-                >
-                  <Trash2Icon />
-                </Button>
-              </div>
-              <div className="w-full items-center">
+            <>
+              <EditorRowWrapper>
                 <InputWithLabel
                   labelName={textKeyStore.school}
                   id={inputEduTitleId}
@@ -67,40 +55,33 @@ export const Education = memo(function Education({
                     });
                   }}
                 />
-              </div>
-              <div className="w-full items-center grid grid-cols-2 justify-items-stretch gap-2">
-                <div className="w-auto">
-                  <InputWithLabel
-                    labelName={textKeyStore.from}
-                    id={inputEduFromDateId}
-                    placeholder={textKeyStore.from}
-                    value={edu.from ?? ""}
-                    onChange={(e) => {
+              </EditorRowWrapper>
+              <EditorRowWrapper>
+                <DurationInput
+                  id={inputEduDateId}
+                  from={{
+                    value: edu.from ?? "",
+                    onChange: (e) => {
                       edu.from = e.target.value;
                       cvDispatch({
                         type: "updateEducationItem",
                         data: { index: i, value: edu },
                       });
-                    }}
-                  />
-                </div>
-                <div className="w-auto">
-                  <InputWithLabel
-                    labelName={textKeyStore.to}
-                    id={inputEduToDateId}
-                    placeholder={textKeyStore.to}
-                    value={edu.to ?? ""}
-                    onChange={(e) => {
+                    },
+                  }}
+                  to={{
+                    value: edu.to ?? "",
+                    onChange: (e) => {
                       edu.to = e.target.value;
                       cvDispatch({
                         type: "updateEducationItem",
                         data: { index: i, value: edu },
                       });
-                    }}
-                  />
-                </div>
-              </div>
-              <div className="w-full items-center">
+                    },
+                  }}
+                />
+              </EditorRowWrapper>
+              <EditorRowWrapper>
                 <InputWithLabel
                   labelName={textKeyStore.major}
                   id={inputEduMajorId}
@@ -114,11 +95,11 @@ export const Education = memo(function Education({
                     });
                   }}
                 />
-              </div>
-            </div>
+              </EditorRowWrapper>
+            </>
           );
-        })}
-      </div>
+        }}
+      />
     </div>
   );
 });

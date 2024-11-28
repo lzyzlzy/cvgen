@@ -1,9 +1,10 @@
 import { memo, useCallback } from "react";
-import { BlockTitle } from "./BlockTitle";
+import { BlockTitle } from "./ui/BlockTitle";
 import * as CV from "@/core/CV";
 import { UseCvDispatch } from "@/hooks/CvContext";
 import { UseLocalization } from "@/hooks/LocalizationContext";
 import { InputWithLabel } from "../ui/InputWithLabel";
+import { EditorRowWrapper } from "./ui/EditorRowWrapper";
 
 export const BasicInfo = memo(function BasicInfo({
   basicInfo,
@@ -22,7 +23,7 @@ export const BasicInfo = memo(function BasicInfo({
 
   const renderInputTextField = useCallback(
     (label: string, id: keyof CV.Basic, type: string = "text") => (
-      <div className="w-full items-center">
+      <EditorRowWrapper>
         <InputWithLabel
           labelName={label}
           className=""
@@ -35,7 +36,7 @@ export const BasicInfo = memo(function BasicInfo({
             `set${id.charAt(0).toUpperCase() + id.slice(1)}`
           )}
         />
-      </div>
+      </EditorRowWrapper>
     ),
     [basicInfo, onInputValueChange]
   );

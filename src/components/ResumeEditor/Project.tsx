@@ -2,11 +2,11 @@ import { CvEvent } from "@/core/CV";
 import { UseCvDispatch } from "@/hooks/CvContext";
 import { UseLocalization } from "@/hooks/LocalizationContext";
 import { memo } from "react";
-import { BlockTitleWithPlusButton } from "./BlockTitle";
-import { Trash2Icon } from "lucide-react";
-import { Button } from "../ui/button";
+import { BlockTitleWithPlusButton } from "./ui/BlockTitle";
 import { InputWithLabel } from "../ui/InputWithLabel";
 import { TextareaWithLabel } from "../ui/TextareaWithLabel";
+import { IterableContent } from "./ui/IterableContent";
+import { EditorRowWrapper } from "./ui/EditorRowWrapper";
 
 export const Project = memo(function Project({
   projects,
@@ -27,32 +27,20 @@ export const Project = memo(function Project({
           })
         }
       />
-      <div>
-        {projects?.map((proj, i) => {
+      <IterableContent
+        source={projects}
+        onTrashClick={(proj) =>
+          cvDispatch({
+            type: "removeProject",
+            data: proj,
+          })
+        }
+        render={(proj, i) => {
           const inputProjTitleId = "proj_title_input_" + i;
           const inputProjContentId = "proj_Content_input_" + i;
           return (
-            <div
-              className="border-t-2 mb-2 dark:border-white hover:shadow-xl"
-              key={"proj_item_" + i}
-            >
-              <div className="flex flex-row justify-between items-center">
-                <p className="text-md font-bold">{i + 1}.</p>
-                <Button
-                  onClick={() =>
-                    cvDispatch({
-                      type: "removeProject",
-                      data: proj,
-                    })
-                  }
-                  variant="ghost"
-                  size="icon"
-                  className="dark:bg-slate-700 dark:text-white dark:hover:bg-slate-500 bg-white hover:border-black"
-                >
-                  <Trash2Icon />
-                </Button>
-              </div>
-              <div className="w-full items-center">
+            <>
+              <EditorRowWrapper>
                 <InputWithLabel
                   labelName={textKeyStore.name}
                   id={inputProjTitleId}
@@ -66,8 +54,8 @@ export const Project = memo(function Project({
                     });
                   }}
                 />
-              </div>
-              <div className="w-full items-center">
+              </EditorRowWrapper>
+              <EditorRowWrapper>
                 <TextareaWithLabel
                   labelName={textKeyStore.content}
                   rows={4}
@@ -82,11 +70,11 @@ export const Project = memo(function Project({
                     });
                   }}
                 />
-              </div>
-            </div>
+              </EditorRowWrapper>
+            </>
           );
-        })}
-      </div>
+        }}
+      />
     </div>
   );
 });
