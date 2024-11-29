@@ -50,6 +50,24 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
       </header>
 
       <section className="mb-1">
+        <h2 className="text-2xl font-semibold">{textKeyStore.education}</h2>
+        {data.educations && data.educations.length > 0 ? (
+          data.educations.map((edu, index) => (
+            <div key={index} className="mb-1">
+              <p className="text-xl font-bold">{edu.school}</p>
+              <p className="italic">{edu.major}</p>
+              <p>
+                {edu.from} - {edu.to}
+              </p>
+              <p>{edu.content}</p>
+            </div>
+          ))
+        ) : (
+          <></>
+        )}
+      </section>
+
+      <section className="mb-1">
         <h2 className="text-2xl font-semibold">{textKeyStore.experience}</h2>
         {data.experiences && data.experiences.length > 0 ? (
           data.experiences.map((exp, index) => (
@@ -80,23 +98,6 @@ export const ResumeViewer = forwardRef(function ResumeViewer(
         )}
       </section>
 
-      <section className="mb-1">
-        <h2 className="text-2xl font-semibold">{textKeyStore.education}</h2>
-        {data.educations && data.educations.length > 0 ? (
-          data.educations.map((edu, index) => (
-            <div key={index} className="mb-1">
-              <p className="text-xl font-bold">{edu.school}</p>
-              <p className="italic">{edu.major}</p>
-              <p>
-                {edu.from} - {edu.to}
-              </p>
-              <p>{edu.content}</p>
-            </div>
-          ))
-        ) : (
-          <></>
-        )}
-      </section>
       <section className="mb-1">
         <h2 className="text-2xl font-semibold">{textKeyStore.projects}</h2>
         {data.projects && data.projects.length > 0 ? (

@@ -18,9 +18,9 @@ export function ResumeEditor() {
       <Separator className="my-4" />
       <Experience experiences={currentCV?.experiences} />
       <Separator className="my-4" />
-      <Project projects={currentCV?.projects} />
-      <Separator className="my-4" />
       <Skill skills={currentCV?.skills} />
+      <Separator className="my-4" />
+      <Project projects={currentCV?.projects} />
     </EditorWrapper>
   );
 }
